@@ -1,4 +1,5 @@
 import Workout from "../models/workoutModel.js";
+import mongoose from "mongoose";
 
 // get all workouts
 export const getWorkouts = async (req, res) => {
@@ -8,6 +9,21 @@ export const getWorkouts = async (req, res) => {
 };
 
 // get a single workout
+export const getWorkout = async (req, res) => {
+  // get id from req
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+
+  const workout = await Workout.findById(id);
+
+  if (!workout) {
+    return res.status(404).json({ error: "no such workout" });
+  }
+  res.status(200).json(workout);
+};
 
 // create new workout
 export const createWorkout = async (req, res) => {

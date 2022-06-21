@@ -2,6 +2,7 @@ import express from "express";
 import Workout from "../models/workoutModel.js";
 import {
   createWorkout,
+  getWorkout,
   getWorkouts,
 } from "../controllers/workoutController.js";
 
@@ -12,9 +13,7 @@ const router = express.Router();
 router.get("/", getWorkouts);
 
 //GET a single workout
-router.get("/:id", (req, res) => {
-  res.json({ msg: "Get a single workouts" });
-});
+router.get("/:id", getWorkout);
 
 //POST a new workout
 router.post("/", createWorkout);
