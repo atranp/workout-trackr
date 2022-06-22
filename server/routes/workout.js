@@ -4,6 +4,8 @@ import {
   createWorkout,
   getWorkout,
   getWorkouts,
+  deleteWorkout,
+  updateWorkout
 } from "../controllers/workoutController.js";
 
 // Instantiate router ref
@@ -19,13 +21,9 @@ router.get("/:id", getWorkout);
 router.post("/", createWorkout);
 
 //DELETE a workout
-router.delete("/:id", (req, res) => {
-  res.json({ msg: "DELETE a workout" });
-});
+router.delete("/:id", deleteWorkout);
 
 //UPDATE a workout
-router.patch("/:id", (req, res) => {
-  res.json({ msg: "UPDATE a workout" });
-});
+router.patch("/:id", updateWorkout);
 
 export default router;
