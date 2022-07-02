@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: "https://workouttrackr.herokuapp.com/",
+    origin: "*",
   })
 );
 
