@@ -2,6 +2,7 @@ import express from "express";
 import router from "./routes/workout.js";
 import mongoose from "mongoose";
 import "dotenv/config";
+import cors from "cors";
 
 // instantiate app
 const app = express();
@@ -12,18 +13,11 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-});
+app.use(
+  cors({
+    origin: "https://workouttrackr.herokuapp.com/",
+  })
+);
 
 // routes
 app.use("/api/workouts", router);
