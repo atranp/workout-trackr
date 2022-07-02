@@ -1,11 +1,21 @@
 main {
-    max-width: 1400px;
-    padding: 20px;
-    margin: 0 auto;
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 .home {
-    display: grid;
-    grid-template-columns:  3fr 1fr;
-    gap: 100px;
+  display: flex;
+  column-gap: 5%;
+  flex-wrap: wrap;
+}
+
+.workouts {
+  flex: 1 1 65%;
+  min-width: 40ch;
+}
+.workoutDetails h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
 }
